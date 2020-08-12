@@ -1,5 +1,10 @@
 <?php
 $mysqli = new Mysqli('localhost','root','', 'dialogue');
+if($_POST)
+{
+	echo "pseudo posté: $_POST[pseudo]<br>";
+	echo "message posté: $_POST[message]<br>";
+}
 ?>
 <hr>
 <form method="post" action="">
