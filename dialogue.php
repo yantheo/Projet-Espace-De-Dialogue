@@ -21,11 +21,14 @@ if($_POST)
 }
 //--------------------------------------------------------------------------------------------------------------------
 //Partie affichage des commentaires
-$resultat = $mysqli->query("SELECT * FROM commentaire");
+//Affichage de la date et heure au format français + ordonner les messages du plus récent au plus ancien.
+$resultat = $mysqli->query("SELECT pseudo, message, DATE_FORMAT(date_enregistrement, '%d/%m/%Y') AS dateFr, 
+							DATE_FORMAT(date_enregistrement, '%H:%i:%s') AS heureFr FROM commentaire ORDER BY date_enregistrement DESC");
+echo "<h2>" . $resultat->num_rows . " nombres de message(s)</h2>";
 while($commentaire = $resultat->fetch_assoc())
 {
 	echo "<div class='message'>";
-		echo "<div class='titre'>Par: " . $commentaire['pseudo'] . ", " . $commentaire['date_enregistrement'] . "</div>";
+		echo "<div class='titre'>Par : " . $commentaire['pseudo'] . ", le " . $commentaire['dateFr'] . " à " . $commentaire['heureFr'] . "</div>";
 		echo "<div class='contenu'>" . $commentaire['message'] . "</div>";
 	echo "</div><hr>";
 }
