@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>Dialogue</title>
+	<style><?php include "style.css";?></style>
+</head>
+<body>
+
 <?php
 // Partie connexion à la BDD
 $mysqli = new Mysqli('localhost','root','', 'dialogue');
@@ -35,12 +44,14 @@ while($commentaire = $resultat->fetch_assoc())
 //--------------------------------------------------------------------------------------------------------------------
 //Partie formulaire d'envoie de commentaire
 ?>
-<form method="post" action="">
-	<label for="pseudo">Pseudo</label><br>
-	<input type="text" id="pseudo" name="pseudo" maxlength="20" pattern="[a-zA-Z0-9.-_]+" title="caractères autorisés : a-zA-Z0-9.-_"><br>
-	
-	<label for ="message">Message</label><br>
-	<textarea id="message" name="message" cols="50" rows="7"></textarea><br>
-	
-	<input type="submit" value="Envoyer le message">
-</form>
+	<form method="post" action="">
+		<label for="pseudo">Pseudo</label><br>
+		<input type="text" id="pseudo" name="pseudo" maxlength="20" pattern="[a-zA-Z0-9.-_]+" title="caractères autorisés : a-zA-Z0-9.-_"><br>
+		
+		<label for ="message">Message</label><br>
+		<textarea id="message" name="message" cols="50" rows="7"></textarea><br>
+		
+		<input type="submit" value="Envoyer le message">
+	</form>
+</body>
+</html>
